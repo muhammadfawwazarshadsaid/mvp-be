@@ -1,12 +1,10 @@
 DROP TABLE IF EXISTS projects;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS vendors;
-DROP TYPE IF EXISTS project_category;
 DROP TYPE IF EXISTS busbar_status;
 DROP TYPE IF EXISTS tracking_status;
-DROP TYPE IF EXISTS user_role;
+DROP TYPE IF EXISTS user_role; 
 
-CREATE TYPE project_category AS ENUM ('PIX', 'MCZ');
 CREATE TYPE busbar_status AS ENUM ('Punching/Bending', 'Plating', 'Heatshrink', 'Done');
 CREATE TYPE user_role AS ENUM ('Admin', 'PIC', 'Production Planning', 'External/Vendor');
 
@@ -32,7 +30,7 @@ CREATE TABLE projects (
     id SERIAL PRIMARY KEY,
     project_name VARCHAR(255) NOT NULL,
     wbs VARCHAR(100) UNIQUE NOT NULL,
-    category project_category,
+    category VARCHAR(255),
     plan_start DATE NOT NULL,
     quantity INTEGER NOT NULL,
     vendor_panel VARCHAR(100),
